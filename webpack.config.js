@@ -2,7 +2,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -55,8 +55,8 @@ module.exports = {
             filename: "../../dist/[name].css",
             chunkFilename: "[id].css"
         }),
-        new OptimizeCssAssetsPlugin({
-            cssProcessorOptions: {
+        new CssMinimizerPlugin({
+            minimizerOptions: {
                 discardComments: {
                     removeAll: true
                 }
