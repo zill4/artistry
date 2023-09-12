@@ -1,60 +1,47 @@
 {
-  "_args": [
-    [
-      "artistry@0.9.7",
-      "C:\\Cubex\\Nimbus\\Dev\\Nimbus.Web"
-    ]
-  ],
-  "_from": "artistry@0.9.7",
-  "_id": "artistry@0.9.7",
-  "_inBundle": false,
-  "_integrity": "sha512-4x2O5YZDXLB1Tq33D101PBFYPcmwWEB7Vj2ynnxc5CSdpQ++NOHecm56Ja3XL1Snqq1kVYxu3oGDbD1uUIntAQ==",
-  "_location": "/artistry",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "artistry@0.9.7",
-    "name": "artistry",
-    "escapedName": "artistry",
-    "rawSpec": "0.9.7",
-    "saveSpec": null,
-    "fetchSpec": "0.9.7"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/artistry/-/artistry-0.9.7.tgz",
-  "_spec": "0.9.7",
-  "_where": "C:\\Cubex\\Nimbus\\Dev\\Nimbus.Web",
-  "author": {
-    "name": "Sean Johnson",
-    "email": "sjohnson@sjohnsonaz.com"
+  "name": "cubex_artistry",
+  "version": "0.9.8",
+  "author": "Sean Johnson <sjohnson@sjohnsonaz.com>",
+  "private": false,
+  "repository": "https://github.com/zill4/cubex_artistry.git",
+  "license": "MIT",
+  "description": "A powerful and configurable stylesheet",
+  "main": "src/styl/main.styl",
+  "scripts": {
+    "prepublishOnly": "webpack",
+    "build": "webpack",
+    "min": "webpack --progress",
+    "dev": "webpack --config webpack.dev.js --progress",
+    "watch": "webpack --config webpack.dev.js --watch --progress",
+    "serve": "webpack-dev-server --config webpack.dev.js --watch --progress",
+    "open": "opn test/html/index.html"
   },
   "dependencies": {
     "normalize.css": "8.0.1"
   },
-  "description": "A powerful and configurable stylesheet",
   "devDependencies": {
-    "@types/jquery": "3.3.31",
-    "autoprefixer": "9.6.1",
+    "@types/jquery": "3.3.38",
+    "autoprefixer": "9.8.0",
     "clean-css-loader": "2.0.0",
-    "css-loader": "3.2.0",
-    "handlebars": "4.4.1",
+    "css-loader": "3.6.0",
+    "handlebars": "4.7.6",
     "handlebars-loader": "1.7.1",
-    "jquery": "3.4.1",
-    "mini-css-extract-plugin": "0.8.0",
-    "opn-cli": "4.0.0",
+    "html-webpack-plugin": "4.3.0",
+    "jquery": "3.5.1",
+    "mini-css-extract-plugin": "0.9.0",
+    "opn-cli": "5.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "postcss-loader": "3.0.0",
     "roboto-fontface": "0.10.0",
-    "style-loader": "1.0.0",
+    "source-map-loader": "1.0.0",
+    "style-loader": "1.2.1",
     "stylus": "0.54.7",
     "stylus-loader": "3.0.2",
-    "ts-loader": "6.2.0",
-    "typescript": "3.6.3",
-    "webpack": "4.41.0",
-    "webpack-cli": "3.3.9"
+    "ts-loader": "7.0.5",
+    "typescript": "3.9.5",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.11.0"
   },
   "keywords": [
     "widget",
@@ -68,22 +55,5 @@
     "carousels",
     "buttons",
     "forms"
-  ],
-  "license": "MIT",
-  "main": "src/styl/main.styl",
-  "name": "artistry",
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "https://www.github.com/sjohnsonaz/artistry.git"
-  },
-  "scripts": {
-    "build": "webpack",
-    "dev": "webpack --config webpack.dev.config.js --progress",
-    "min": "webpack --progress",
-    "open": "opn test/html/index.html",
-    "prepublishOnly": "webpack",
-    "watch": "webpack --config webpack.dev.config.js --watch --progress"
-  },
-  "version": "0.9.7"
+  ]
 }

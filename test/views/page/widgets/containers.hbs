@@ -1,0 +1,124 @@
+<section class="section">
+    <header class="section-title">Containers</header>
+    <div class="section-content section-content-space">
+        {{#> modal}}{{/modal}}
+        {{#> drawer}}{{/drawer}}
+
+        <h3>Tab</h3>
+        <div class="tab-container tab-space" id="tab-regular">
+            <ul class="tab-header">
+                <li class="tab-title tab-active">
+                    <a>Widgets</a>
+                </li>
+                <li class="tab-title"><a>Input</a></li>
+                <li class="tab-title"><a>View Models</a></li>
+            </ul>
+            <div class="tab-body">
+                <div class="tab-panel tab-active">
+                    Widgets Content
+                </div>
+                <div class="tab-panel">
+                    Input Content
+                </div>
+                <div class="tab-panel">
+                    View Models Content
+                </div>
+            </div>
+        </div>
+
+        <h3>Carousel</h3>
+        <div class="tab-container tab-space" id="tab-carousel">
+            <ul class="tab-header">
+                <li class="tab-title tab-active">
+                    <a>Widgets</a>
+                </li>
+                <li class="tab-title"><a>Input</a></li>
+                <li class="tab-title"><a>View Models</a></li>
+            </ul>
+            <div class="carousel tab-carousel" id="carousel-tab">
+                <div class="carousel-selected">
+                    <form class="form">
+                        <div class="form-text">
+                            Content 0
+                        </div>
+                        <div class="form-group">
+                            <label class="form-title">
+                                Input
+                            </label>
+                            <div class="form-control">
+                                <input class="input fill-width" type="text" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    Content 1
+                    <br />Line 2
+                    <br /><input type="text" class="input" />
+                </div>
+                <div>
+                    Content 2
+                    <br />Line 2
+                    <br />Line 3
+                    <br /><input type="text" class="input" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <button id="clickCarouselBack" class="button">Back</button>
+        <button id="clickCarouselNext" class="button">Next</button>
+        <div class="carousel" id="carousel" style="background-color: black">
+            <div class="carousel-selected" style="background-color: red; padding: 10px;">
+                Content 0
+                <br /><input type="text" class="input" />
+            </div>
+            <div style="background-color: blue; padding: 10px;">
+                Content 1
+                <br />Line 2
+                <br /><input type="text" class="input" />
+            </div>
+            <div style="background-color: yellow; padding: 10px;">
+                Content 2
+                <br />Line 2
+                <br />Line 3
+                <br /><input type="text" class="input" />
+            </div>
+        </div>
+
+        <h3>Flip</h3>
+        <button id="clickFlipBack" class="button">Back</button>
+        <button id="clickFlipNext" class="button">Next</button>
+        <div class="carousel carousel-animate-flip" id="flip" style="background-color: black">
+            <div class="carousel-selected" style="background-color: red; padding: 10px;">
+                Content 0
+                <br /><input type="text" class="input" />
+            </div>
+            <div style="background-color: blue; padding: 10px;">
+                Content 1
+                <br />Line 2
+                <br /><input type="text" class="input" />
+            </div>
+            <div style="background-color: yellow; padding: 10px;">
+                Content 2
+                <br />Line 2
+                <br />Line 3
+                <br /><input type="text" class="input" />
+            </div>
+        </div>
+
+        <h3>Locked</h3>
+        <section id="closedSection" class="section">
+            <header class="section-title" id="sectionHeader">
+                Locked Content
+                <button id="clickToggleSection" class="button button-lockable section-toggle">
+                    <div class="button-text">-</div>
+                    <div class="button-spinner">O</div>
+                </button>
+            </header>
+            <div id="sectionContent" class="section-content section-content-space lock-contents">
+                <button id="clickLockSection" class="button">Lock</button>
+            </div>
+        </section>
+    </div>
+    <footer class="section-title">Footer</footer>
+</section>
