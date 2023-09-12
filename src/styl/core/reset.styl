@@ -1,0 +1,28 @@
+@require "../settings.styl";
+html {
+    box-sizing: border-box;
+}
+*, 
+*:before, 
+*:after {
+    box-sizing: inherit;
+}
+html, 
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+html {
+    font-family: $default-font-family;
+    color: $black;
+}
+iframe {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+// TODO: Should we include this here?
+[hidden] {
+    display: none !important;
+}

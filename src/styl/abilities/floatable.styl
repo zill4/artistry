@@ -1,0 +1,43 @@
+:root {
+    --shadow-depth: 1;
+    --shadow-ambient-offset-x: 0px;
+    --shadow-ambient-offset-y: 1.6px;
+    --shadow-ambient-blur-radius: 3.6px;
+    --shadow-ambient-spread-radius: 0px;
+    --shadow-ambient-color: rgba(0, 0, 0, 0.132);
+    --shadow-key-offset-x: 0px;
+    --shadow-key-offset-y: 0.3px;
+    --shadow-key-blur-radius: 0.9px;
+    --shadow-key-spread-radius: 0px;
+    --shadow-key-color: rgba(0, 0, 0, 0.108);
+    --shadow-ambient: calc(
+        var(--shadow-depth) * var(--shadow-ambient-offset-x)
+    ) calc(
+        var(--shadow-depth) * var(--shadow-ambient-offset-y)
+    ) calc(
+        var(--shadow-depth) * var(--shadow-ambient-blur-radius)
+    ) calc(
+        var(--shadow-depth) * var(--shadow-ambient-spread-radius)
+    ) var(--shadow-ambient-color);
+    --shadow-key: calc(
+        var(--shadow-depth) * var(--shadow-key-offset-x)
+    ) calc(
+        var(--shadow-depth) * var(--shadow-key-offset-y)
+    ) calc(
+        var(--shadow-depth) * var(--shadow-key-blur-radius)
+    ) calc(
+        var(--shadow-depth) * var(--shadow-key-spread-radius)
+    ) var(--shadow-key-color);
+}
+
+.floatable {
+    box-shadow: var(--shadow-ambient), var(--shadow-key);
+}
+
+/*
+ * .depth-0  box-shadow: 0  0       0     0 transparent
+ * .depth-4  box-shadow: 0  1.6px   3.6px 0 rgba(0, 0, 0, .132), 0 0.3px  0.9px 0 rgba(0, 0, 0, .108);
+ * .depth-8  box-shadow: 0  3.2px   7.2px 0 rgba(0, 0, 0, .132), 0 0.6px  1.8px 0 rgba(0, 0, 0, .108);
+ * .depth-16 box-shadow: 0  6.4px  14.4px 0 rgba(0, 0, 0, .132), 0 1.2px  3.6px 0 rgba(0, 0, 0, .108);
+ * .depth-64 box-shadow: 0 25.6px  57.6px 0 rgba(0, 0, 0, .132), 0 4.8px 14.4px 0 rgba(0, 0, 0, .108);
+ */

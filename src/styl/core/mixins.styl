@@ -1,0 +1,123 @@
+@require "../settings.styl";
+.hidden {
+    display: none !important;
+}
+.hidden-soft {
+    position: absolute !important;
+    overflow: hidden;
+    top: -9999px !important;
+    left: -9999px !important;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+.hidden-visually {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+.show-block {
+    display: block !important;
+}
+clearfix() {
+    &:before,
+    &:after {
+        display: table;
+        content: '';
+        clear: both;
+    }
+}
+.clearfix {
+    clearfix();
+}
+pull-left() {
+    float: left;
+}
+.pull-left {
+    pull-left();
+}
+pull-right() {
+    float: right;
+}
+.pull-right {
+    pull-right();
+}
+
+.fill-width
+    width: 100%
+
+.fill-height
+    height: 100%
+
+.fill
+    width: 100%
+    height: 100%
+
+relative() {
+    position: relative;
+}
+.relative {
+    relative();
+}
+
+.border {
+    border-width: $default-border-width;
+    border-color: $default-border-color;
+    border-style: solid;
+    border-radius: $default-border-radius;
+}
+
+.border-top {
+    border-top-width: $default-border-width;
+    border-top-color: $default-border-color;
+    border-top-style: solid;
+}
+
+.border-right {
+    border-right-width: $default-border-width;
+    border-right-color: $default-border-color;
+    border-right-style: solid;
+}
+
+.border-bottom {
+    border-bottom-width: $default-border-width;
+    border-bottom-color: $default-border-color;
+    border-bottom-style: solid;
+}
+
+.border-left {
+    border-left-width: $default-border-width;
+    border-left-color: $default-border-color;
+    border-left-style: solid;
+}
+
+.divider,
+.divider-horizontal {
+    margin: 0;
+    border-width: $default-divider-width 0 0 0;
+    border-color: $default-border-color;
+    border-style: solid;
+}
+
+.divider-vertical {
+    margin: 0;
+    border-width: 0 $default-divider-width 0 0;
+    border-color: $default-border-color;
+    border-style: solid;
+}
+
+.disabled {
+    filter: contrast(40%) brightness(110%);
+    cursor: default;
+    user-select: none;
+    pointer-events: none;
+}
+
+.nowrap {
+    white-space: nowrap;
+}

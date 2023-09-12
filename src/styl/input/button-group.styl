@@ -1,0 +1,190 @@
+@require "input-settings.styl";
+    
+focus-tight() {
+    &:focus,
+    &.button-down:enabled {
+        outline: none;
+        background-color: darken($input-default-background-color, $input-color-variance);
+        border-color: $input-default-border-color;
+        box-shadow: inherit;
+    }
+}
+
+.button-group {
+    display: inline-flex;
+    margin: $input-margin;
+    padding: 0;
+    vertical-align: middle;
+    box-shadow: $input-box-shadow-height-0;
+    border-radius: $input-border-radius;
+    transition: box-shadow 0.3s;
+
+    & > .button,
+    & > .input {
+        display: block;
+        //position: relative;
+        margin: 0;
+        border-right-width: 0;
+        border-radius: 0;
+        box-shadow: none;
+        &:first-child {
+            border-top-left-radius: $input-border-radius;
+            border-bottom-left-radius: $input-border-radius;
+        }
+        &:last-child {
+            border-right-width: $input-border-width;
+            border-top-right-radius: $input-border-radius;
+            border-bottom-right-radius: $input-border-radius;
+        }
+
+        [dir=rtl] &:first-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+            border-right-width: $input-border-width;
+            border-top-right-radius: $input-border-radius;
+            border-bottom-right-radius: $input-border-radius;
+        }
+        [dir=rtl] &:last-child {
+            border-right-width: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
+            border-left-width: $input-border-width;
+            border-top-left-radius: $input-border-radius;
+            border-bottom-left-radius: $input-border-radius;
+        }
+
+        &:hover {
+            z-index: 1;
+        }
+    }
+
+    & > .button {
+        focus-tight();
+    }
+
+    // Fix box-shadow for regular buttons (specificity)
+    & > .button:not(.button-textonly):not(.button-outline) {
+        box-shadow: none;
+    }
+
+    // Fix border for outline buttons
+    & > .button.button-outline {
+        &:last-child {
+            border-right-width: $button-outline-border-width;
+        }
+
+        [dir=rtl] &:first-child {
+            border-right-width: $button-outline-border-width;
+        }
+
+        [dir=rtl] &:last-child {
+            border-right-width: 0;
+
+            border-left-width: $button-outline-border-width;
+        }
+    }
+
+    // Added fix for popover
+    &.popover-trigger {
+        display: inline-flex;
+    }
+}
+
+.button-bar {
+    display: inline-flex;
+    margin: $input-margin;
+    padding: ($button-bar-margin / 2);
+    vertical-align: middle;
+    border: $input-border-width solid $input-default-border-color;
+    border-radius: $input-border-radius;
+    background-color: $button-bar-background-color;
+    box-shadow: $input-box-shadow-height-0;
+    & > .button, 
+    & > .input {
+        display: block;
+        margin: ($button-bar-margin / 2);
+        focus-tight();
+    }
+}
+
+.action-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-grow: 1;
+    margin: $button-bar-margin ($button-bar-margin / 2);
+    padding: 0;
+
+    // Direction
+    &[data-direction="forward"] {
+        flex-direction: row;
+    }
+
+    &[data-direction="reverse"] {
+        flex-direction: row-reverse;
+    }
+
+    // Align
+    &[data-align="start"] {
+        justify-content: flex-start;
+    }
+
+    &[data-align="end"] {
+        justify-content: flex-end;
+    }
+
+    &[data-align="center"] {
+        justify-content: center;
+    }
+
+    &[data-align="space-between"] {
+        justify-content: space-between;
+    }
+
+    &[data-align="space-around"] {
+        justify-content: space-around;
+    }
+
+    &[data-align="space-evenly"] {
+        justify-content: space-evenly;
+    }
+
+    // Size
+    &[data-size="small"] {
+        margin: $button-bar-margin-small ($button-bar-margin-small / 2);
+
+        & > * {
+            margin: 0 ($button-bar-margin-small / 2);
+        }
+    }
+
+    &[data-size="large"] {
+        margin: $button-bar-margin-large ($button-bar-margin-large / 2);
+
+        & > * {
+            margin: 0 ($button-bar-margin-large / 2);
+        }
+    }
+
+    & > * {
+        margin: 0 ($button-bar-margin / 2);
+    }
+}
+
+.action-bar-breadcrumb {
+    justify-content: flex-start;
+    position: relative;
+    & > .action-bar-dropdown {
+        position: absolute;
+        left: 0;
+    }
+    & > .action-bar-breadcrumb-item-hidden {
+        visibility: hidden;
+    }
+}
+
+.spacer {
+    flex-grow: 1;
+}

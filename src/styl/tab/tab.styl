@@ -1,0 +1,119 @@
+@require "tab-settings.styl";
+@require "../core/mixins.styl";
+.tab-container {
+    margin: .7em 0;
+    & > .tab-header {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        & > li {
+            user-select: none;
+            display: block;
+            position: relative;
+            margin: 0 10px 0 0;
+            padding: 0;
+
+            //top: $tab-border-width;
+            border: $tab-border-width solid $tab-border-color;
+            border-bottom: 0;
+            border-top-left-radius: $tab-border-radius;
+            border-top-right-radius: $tab-border-radius;
+            background-color: $tab-inactive-background-color;
+            box-shadow: $tab-box-shadow;
+            & > a {
+                display: block;
+                padding: $tab-header-padding;
+                text-decoration: none;
+                cursor: pointer;
+                color: $tab-inactive-color;
+            }
+        }
+        & > li:hover {
+            background-color: $tab-hover-background-color;
+            & > a {
+                color: $tab-hover-color;
+            }
+        }
+        & > li:active {
+            background-color: $tab-active-background-color;
+            & > a {
+                color: $tab-active-color;
+            }
+        }
+        & > li.tab-active {
+            background-color: $tab-background-color;
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                // Added 1 pixel extra to cover IE artifacts
+                bottom: -1 * $tab-border-width - 1px;
+                height: $tab-border-width + $tab-box-shadow-guard + 1px;
+                width: 100%;
+                background-color: $tab-background-color;
+                z-index: 1;
+            }
+            & > a {
+                cursor: default;
+                color: $tab-color;
+            }
+        }
+    }
+    & > .tab-body {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        border: $tab-border-width solid $tab-border-color;
+        background-color: $tab-background-color;
+        border-radius: 0 $tab-border-radius $tab-border-radius $tab-border-radius;
+        box-shadow: $tab-box-shadow;
+        & > div {
+            display: none;
+            clearfix();
+            &.tab-active {
+                display: block;
+            }
+        }
+    }
+    &:not(.fill-height) {
+        & > .tab-carousel {
+            display: block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            border: $tab-border-width solid $tab-border-color;
+            background-color: $tab-background-color;
+            border-radius: 0 $tab-border-radius $tab-border-radius $tab-border-radius;
+            box-shadow: $tab-box-shadow;
+
+            &:before,
+            &:after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+        }
+    }
+    &.fill-height {
+        & > .tab-carousel{
+            border-top: $tab-border-width solid $tab-border-color;
+            background-color: $tab-background-color;
+
+            &:before,
+            &:after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+        }
+    }
+
+    &.tab-space {
+        .tab-body > div,
+        .tab-carousel > div {
+            padding: $tab-body-padding;
+        }
+    }
+}

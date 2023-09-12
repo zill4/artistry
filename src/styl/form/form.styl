@@ -1,0 +1,169 @@
+@require "form-settings.styl";
+
+:root {
+    --form-columns: 12;
+    --form-title-span: 3;
+    --form-spacing: $form-spacing;
+}
+
+.form
+    &.form-lock
+        position: relative;
+
+        & > .form-lock-screen
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            vertical-align: middle;
+            text-align: center;
+
+
+.form-text
+    --form-title-width: calc(var(--form-title-span) / var(--form-columns) * (100% - var(--form-spacing)));
+    margin: $form-spacing;
+    padding-inline-start: var(--form-title-width);
+    color: var(--form-text-color);
+
+    &.fill
+        padding-inline-start: 0;
+        width: auto;
+        height: auto;
+
+    &[data-theme="success"]
+        --form-text-color: var(--form-text-success-color);
+    &[data-theme="info"]
+        --form-text-color: var(--form-text-info-color);
+    &[data-theme="warning"]
+        --form-text-color: var(--form-text-warning-color);
+    &[data-theme="danger"]
+        --form-text-color: var(--form-text-danger-color);
+
+.form-group
+    --form-title-width: calc(var(--form-title-span) / var(--form-columns) * (100% + var(--form-spacing)) - var(--form-spacing));
+    margin: $form-spacing;
+    display: grid;
+    grid-template-columns: minmax($form-title-min-width, var(--form-title-width)) 1fr;
+    grid-gap: 0 $form-spacing;
+    align-items: center;
+
+    .form-title
+        grid-row: 1;
+        grid-column: 1;
+        font-weight: bold;
+        text-align: end;
+        cursor: default;
+
+    .form-control
+        grid-row: 1;
+        grid-column: 2;
+
+    .form-text
+        grid-row: 2;
+        grid-column: 2;
+        margin: ($form-spacing / 2) 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        font-size: smaller;
+
+    &.form-group-stacked:not(.form-group-inline)
+        grid-template-columns: 1fr;
+        align-items: start;
+ 
+        .form-title
+            text-align: start;
+            margin: ($form-spacing / 2) 0;
+
+        .form-control
+            grid-row: auto;
+            grid-column: 1;
+
+        .form-text
+            grid-row: auto;
+            grid-column: 1;
+
+form-stacked()
+    .form-text
+        padding-inline-start: 0;
+
+    .form-group
+        .form-title
+            text-align: start;
+
+        &:not(.form-group-inline)
+            grid-template-columns: 1fr;
+            align-items: start;
+
+            .form-title
+                margin: ($form-spacing / 2) 0;
+
+            .form-control
+                grid-row: auto;
+                grid-column: 1;
+
+            .form-text
+                grid-row: auto;
+                grid-column: 1;
+
+form-size($max-width)
+    @media screen and (max-width: ($max-width - 1))
+        form-stacked()
+
+.form-stacked
+    form-stacked()
+
+.form-xs
+    form-size($size-xs)
+
+.form-sm
+    form-size($size-sm)
+
+.form-md
+    form-size($size-md)
+
+.form-lg
+    form-size($size-lg)
+
+.form-xl
+    form-size($size-xl)
+
+.form-row
+    --form-title-span: 6;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: $form-spacing;
+    margin: $form-spacing;
+
+    & > .form-group
+        margin: 0;
+
+form-row($max-width)
+    @media screen and (max-width: ($max-width - 1))
+        &.form-row
+            grid-auto-flow: row;
+
+.form-row-stacked
+    &.form-row
+        grid-auto-flow: row;
+
+.form-row-xs
+    form-row($size-xs)
+
+.form-row-sm
+    form-row($size-sm)
+
+.form-row-md
+    form-row($size-md)
+
+.form-row-lg
+    form-row($size-lg)
+
+.form-row-xl
+    form-row($size-xl)

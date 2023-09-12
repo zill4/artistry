@@ -1,0 +1,46 @@
+@require "thumbnail-settings.styl";
+
+.thumbnail {
+    display: inline-block;
+    background-color: $thumbnail-background-color;
+    border: $thumbnail-border-width solid $thumbnail-border-color;
+    color: $thumbnail-color;
+    font-size: $thumbnail-font-size;
+    font-weight: $thumbnail-font-weight;
+    vertical-align: middle;
+    &.thumbnail-user-small {
+        text-align: center;
+        height: $thumbnail-user-small-height;
+        width: $thumbnail-user-small-height;
+        border-radius: ($thumbnail-user-small-height / 2);
+    }
+    &.thumbnail-user,
+    &.thumbnail-user-medium {
+        text-align: center;
+        height: $thumbnail-user-medium-height;
+        width: $thumbnail-user-medium-height;
+        border-radius: ($thumbnail-user-medium-height / 2);
+    }
+    &.thumbnail-user-large {
+        text-align: center;
+        height: $thumbnail-user-large-height;
+        width: $thumbnail-user-large-height;
+        border-radius: ($thumbnail-user-large-height / 2);
+    }
+    &.thumbnail-type-0 {
+        color: $thumbnail-type-0-color;
+        background-color: $thumbnail-type-0-background-color;
+    }
+    &.thumbnail-type-1 {
+        color: $thumbnail-type-1-color;
+        background-color: $thumbnail-type-1-background-color;
+    }
+    &.thumbnail-type-2 {
+        color: $thumbnail-type-2-color;
+        background-color: $thumbnail-type-2-background-color;
+    }
+    &.thumbnail-type-3 {
+        color: $thumbnail-type-3-color;
+        background-color: $thumbnail-type-3-background-color;
+    }
+}

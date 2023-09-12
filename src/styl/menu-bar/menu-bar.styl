@@ -1,0 +1,95 @@
+@require "menu-bar-settings.styl";
+
+.menu-bar {
+    display: flex;
+    flex-direction: horizontal;
+    background-color: $menu-bar-background-color;
+    box-shadow: $menu-bar-shadow;
+
+    & > .menu-bar-title {
+        display: block;
+        padding: 0 $menu-bar-padding;
+        font-size: $menu-bar-title-font-size;
+        font-weight: bold;
+        line-height: $menu-bar-height;
+        color: $menu-bar-color;
+        white-space: nowrap;
+    }
+
+    & > .menu-bar-expander {
+        display: block;
+        transition: background-color 0.3s;
+        & > a {
+            padding: 0 $menu-bar-padding;
+            font-size: $menu-bar-title-font-size;
+            font-weight: bold;
+            line-height: $menu-bar-height;
+            color: $menu-bar-color;
+            text-decoration: none;
+        }
+        &:hover {
+            background-color: $menu-bar-background-color-hover;
+        }
+        &.menu-bar-expander-active {
+            background-color: $menu-bar-background-color-hover;
+        }
+    }
+
+    & > ul {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        & > li {
+            display: block;
+            font-size: $menu-bar-font-size;
+
+            &.menu-link {
+                & > a,
+                & > span {
+                    color: $menu-bar-color;
+                    text-decoration: none;
+                    transition: background-color 0.3s;
+                    &:hover {
+                        background-color: $menu-bar-background-color-hover;
+                    }
+                }
+                &.menu-active > a {
+                    background-color: $menu-bar-background-color-active;
+                }
+            }
+
+            & > * {
+                display: block;
+                height: $menu-bar-height;
+                padding: $menu-bar-padding;
+                line-height: $menu-bar-height - 2 * $menu-bar-padding;
+            }
+        }
+    }
+
+    &.menu-bar-top {
+        height: $menu-bar-height;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        // TODO: Simplify z-indexes.
+        z-index: 11;
+    }
+}
+
+.menu-bar-placeholder {
+    height: $menu-bar-height;
+}
+
+.container-menu-bar-top {
+    padding-top: $menu-bar-height;
+}
+
+.popover-menu-bar-top > .popover-mask {
+    top: $menu-bar-height;
+}

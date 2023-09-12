@@ -1,0 +1,14 @@
+:root {
+  --scrollbar-width-init: calc(100vw - 100%);
+  --scrollbar-width: 0px;
+}
+
+body.body-scroll {
+    overflow-y: scroll;
+    &[data-lock="init"] {
+        margin-right: var(--scrollbar-width-init);
+    }
+    &[data-lock="hide"] {
+        overflow-y: hidden;
+    }
+}

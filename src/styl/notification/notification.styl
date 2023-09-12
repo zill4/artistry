@@ -1,0 +1,76 @@
+@require "notification-settings.styl";
+.notification-container {
+    display: block;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    right: 0;
+    bottom: 0;
+    width: $notification-width;
+    z-index: 100;
+    pointer-events: none;
+    &.notification-top {
+        top: $notification-margin;
+        bottom: auto;
+    }
+    &.notification-right {
+        right: $notification-margin;
+        left: auto;
+    }
+    &.notification-bottom {
+        top: auto;
+        bottom: $notification-margin;
+    }
+    &.notification-left {
+        right: auto;
+        left: $notification-margin;
+    }
+    &.notification-center-vertical {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+    &.notification-center-horizontal {
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+    }
+    .notification {
+        margin: $notification-margin;
+    }
+}
+.notification {
+    display: block;
+    margin: $notification-margin 0;
+    padding: $notification-padding;
+    border: $notification-border-width solid $notification-border-color;
+    border-radius: $notification-border-radius;
+    background-color: var(--notification-background-color);
+    color: var(--notification-color);
+    box-shadow: $notification-box-shadow;
+    pointer-events: auto;
+    &[data-theme="success"] {
+        --notification-background-color: var(--notification-success-background-color);
+        --notification-color: var(--notification-success-color);
+    }
+    &[data-theme="info"] {
+        --notification-background-color: var(--notification-info-background-color);
+        --notification-color: var(--notification-info-color);
+    }
+    &[data-theme="warning"] {
+        --notification-background-color: var(--notification-warning-background-color);
+        --notification-color: var(--notification-warning-color);
+    }
+    &[data-theme="danger"] {
+        --notification-background-color: var(--notification-danger-background-color);
+        --notification-color: var(--notification-danger-color);
+    }
+    // TODO: Move this to general clickable
+    &.clickable:hover {
+        filter: contrast(0.6) brightness(1.2);
+    }
+    & > header {
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,113 @@
+@require 'carousel-settings.styl';
+
+.carousel {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+
+    &:before,
+    &:after {
+        display: table;
+        content: '';
+        clear: both;
+    }
+
+    & > div {
+        display: none;
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        min-height: $carousel-min-height;
+        right: 0;
+        left: 0;
+        transition: transform $carousel-animation-time, visibility $carousel-animation-time;
+        transform: translateX(-100%);
+        visibility: hidden;
+
+        &.carousel-selected {
+            display: block;
+            transform: translateX(0);
+            position: relative;
+            visibility: visible;
+        }
+
+        &.carousel-selected ~ div {
+            transform: translateX(100%);
+        }
+    }
+
+    &.carousel-space > div {
+        padding: $carousel-spacing;
+    }
+
+    &.fill-height > div {
+        height: 100%;
+    }
+
+    &.carousel-safe {
+        & > div {
+            right: 100%;
+            left: -100%;
+            transition: left $carousel-animation-time, right $carousel-animation-time, visibility $carousel-animation-time;
+            transform: none;
+
+            &.carousel-selected {
+                right: 0;
+                left: 0;
+                transform: none;
+            }
+
+            &.carousel-selected ~ div {
+                right: -100%;
+                left: 100%;
+                transform: none;
+            }
+        }
+    }
+
+    & > div.carousel-selected.carousel-selecting,
+    &.carousel-run {
+        transition: height $carousel-animation-time;
+        overflow: hidden;
+        &.carousel-animate-flip {
+            overflow: visible;
+        }
+
+        & > div {
+            display: block;
+            &.carousel-selected {
+                position: absolute;
+                z-index: 1;
+            }
+        }
+    }
+
+    &.carousel-animate-fade {
+        & > div {
+            transition: transform $carousel-animation-time, opacity $carousel-animation-time;
+            opacity: 0;
+
+            &.carousel-selected {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.carousel-animate-flip {
+        perspective: 1500px;
+
+        & > div {
+            transform: RotateY(-180deg);
+            backface-visibility: hidden;
+
+            &.carousel-selected {
+                transform: RotateY(0deg);
+            }
+
+            &.carousel-selected ~ div {
+                transform: RotateY(180deg);
+            }
+        }
+    }
+}

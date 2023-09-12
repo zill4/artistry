@@ -1,0 +1,238 @@
+@require "card-settings.styl";
+@require "../core/mixins.styl";
+
+$card-header-margin = -($card-border-width + $card-padding);
+
+.card-container {
+    --card-min-width: $card-min-width;
+    --card-max-width: $card-max-width;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-min-width), var(--card-max-width)));
+    grid-gap: $card-gap;
+
+    & > .card,
+    & > .card-fillable.fillable {
+        margin: 0;
+    }
+}
+
+.card {
+    --card-handle-width: $card-handle-width;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+    margin: $card-margin 0;
+
+    border: $card-border-width solid $card-border-color;
+
+    color: $card-color;
+    background-color: $card-background-color;
+    box-shadow: $card-box-shadow;
+
+    transition: height $card-animation-time;
+
+    &:not(.card-square) {
+        border-radius: $card-border-radius;
+
+        & > *:first-child {
+            border-top-left-radius: $card-border-radius;
+            border-top-right-radius: $card-border-radius;
+        }
+
+        & > *:last-child {
+            border-bottom-left-radius: $card-border-radius;
+            border-bottom-right-radius: $card-border-radius;
+        }
+    }
+
+    & > *:first-child {
+        border-top-width: 0;
+    }
+
+    & > *:last-child {
+        border-bottom-width: 0;
+    }
+
+    &.card-type-success {
+        border-color: $card-success-border-color;
+    }
+
+    &.card-type-info {
+        border-color: $card-info-border-color;
+    }
+
+    &.card-type-warning {
+        border-color: $card-warning-border-color;
+    }
+
+    &.card-type-danger {
+        border-color: $card-danger-border-color;
+    }
+
+    &.card-handle-top {
+        border-top-width: var(--card-handle-width);
+    }
+
+    &.card-handle-right {
+        border-right-width: var(--card-handle-width);
+    }
+
+    &.card-handle-bottom {
+        border-bottom-width: var(--card-handle-width);
+    }
+
+    &.card-handle-left {
+        border-left-width: var(--card-handle-width);
+    }
+
+    $.card-handle-bold {
+
+    }
+
+    & > header,
+    & > footer,
+    & > .card-title {
+        display: flex;
+        //border: $card-border-width solid $card-border-color;
+        border-width: $card-border-width 0;
+        border-color: $card-border-color;
+        border-style: solid;
+        margin: 0;//(-1 * $card-border-width);
+        padding: $card-padding;
+        clearfix();
+
+        &:first-child {
+            margin-bottom: 0;
+        }
+
+        &:last-child {
+            margin-top: 0;
+        }
+
+        & > .card-toggle {
+            padding: 0;
+            margin: 0;
+            margin-left: auto;
+            height: 20px;
+            width: 20px;
+            font-weight: bold;
+        }
+    }
+
+    & > header,
+    & > .card-title {
+        background-color: $card-header-background-color;
+        color: $card-header-color;
+        font-weight: $card-header-font-weight;
+    }
+
+    & > footer {
+        background-color: $card-footer-background-color;
+        color: $card-footer-color;
+        font-weight: $card-footer-font-weight;
+    }
+
+    & > nav,
+    & > .card-nav {
+        display: block;
+        clearfix();
+        margin: 0;
+        padding: 0;
+    }
+
+
+    & > .card-content {
+        flex-grow: 1;
+        transition: max-height $card-animation-time;
+        &.card-content-space {
+            padding: $card-padding;
+        }
+        &.lock-contents:after {
+            border-bottom-right-radius: max(0, $card-border-radius - $card-border-width);
+            border-bottom-left-radius: max(0, $card-border-radius - $card-border-width);
+        }
+    }
+
+    &.card-closed,
+    &[data-closed=true] {
+        overflow: hidden;
+        & > div.card-content {
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+            max-height: 0;
+        }
+    }
+    &.card-run {
+        overflow: hidden;
+    }
+}
+
+.card-fillable.fillable
+    margin: $card-margin 0;
+
+    & > .fillable-content > .card
+        margin: 0;
+
+.card-row {
+    display: block;
+    margin: $card-control-margin;
+}
+
+.card-section {
+    --card-control-min-width: $card-min-width;
+    --card-control-max-width: $card-max-width;
+    margin: ($card-control-margin / 2);
+
+    &.card-section-multi-column {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(var(--card-control-min-width), var(--card-control-max-width)));
+        grid-gap: $card-control-margin;
+    }
+
+    &.card-section-centered {
+        & > .card-control:not(.card-control-stacked) {
+            & > .card-control-title {
+                --card-control-margin: $card-control-margin;
+                width: calc(100% / 2 - var(--card-control-margin));
+            }
+        }
+    }
+
+    & > .card-control {
+        display: flex;
+        margin: 0;
+
+        & > .card-control-title {
+            font-weight: bold;
+            margin: ($card-control-margin / 2);
+        }
+
+        & > .card-control-data {
+            margin: ($card-control-margin / 2);
+            text-align: start;
+        }
+
+        &:not(.card-control-stacked) {
+            flex-direction: row;
+            align-items: center;
+
+            & > .card-control-title {
+                width: calc(var(--card-control-min-width) / 3);
+                text-align: end;
+            }
+        }
+
+        &.card-control-stacked {
+            flex-direction: column;
+            justify-items: start;
+
+            & > .card-control-title {
+                text-align: start;
+            }
+        }
+    }
+}

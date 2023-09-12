@@ -1,0 +1,99 @@
+@require "calendar-settings.styl";
+@require "../core/mixins.styl";
+.calendar {
+    & > .calendar-title {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        & > * {
+            margin-bottom: $calendar-title-spacing;
+
+        }
+    }
+    table {
+        width: 100%;
+        td {
+            padding: 0;
+            & > a {
+                display: block;
+                padding: 5px;
+                text-align: end;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                &.calendar-day-selected {
+                    background-color: $calendar-day-selected-background-color;
+                    font-weight: bold;
+                    color: $calendar-day-selected-color;
+                    &:hover {
+                        background-color: $calendar-day-selected-background-color;
+                    }
+                }
+                &.calendar-day-current {
+                    background-color: $calendar-day-current-background-color;
+                    font-weight: bold;
+                    color: $calendar-day-current-color;
+                    &:hover {
+                        background-color: $calendar-day-hover-background-color;
+                    }
+                }
+                &:hover {
+                    background-color: $calendar-day-hover-background-color;
+                }
+            }
+        }
+    }
+}
+.input-date {
+    clearfix();
+    & > .input-date-control {
+        clearfix();
+        & > input {
+            float: left;
+            margin-right: 0;
+            border-right: 0;
+            border-radius: $calendar-border-radius 0 0 $calendar-border-radius;
+        }
+        & > button {
+            float: left;
+            margin-left: 0;
+            border-radius: 0 $calendar-border-radius $calendar-border-radius 0;
+        }
+    }
+    & > .input-date-popup {
+        position: relative;
+        float: left;
+        width: $calendar-width + 20px;
+        & > .input-date-expander {
+            position: absolute;
+            padding: 5px;
+            margin: 5px;
+            overflow: hidden;
+            right: 0;
+            border-radius: $calendar-border-radius $calendar-border-radius $calendar-border-radius $calendar-border-radius;
+            background: #fff;
+            box-shadow: $calendar-box-shadow;
+            .calendar, 
+            .build-widget-calendar-Calendar {
+                width: $calendar-width;
+            }
+        }
+    }
+}
+.input-date {
+    &.input-date-inline {
+        & > .input-date-control {
+            float: left;
+            @media only screen and (max-width: ($size-md - 1)) {
+                float: none;
+            }
+        }
+        & > .input-date-popup {
+            & > .input-date-expander {
+                right: auto;
+                @media only screen and (max-width: ($size-md - 1)) {
+                    right: 0;
+                }
+            }
+        }
+    }
+}

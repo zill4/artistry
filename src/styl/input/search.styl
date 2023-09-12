@@ -1,0 +1,147 @@
+$search-border-radius ?= $input-border-radius;
+$search-border-color ?= $input-default-border-color;
+$search-border-width ?= $input-border-width;
+$search-option-color ?= #ccf;
+$search-divider-width ?= 1px;
+$search-spacing ?= 7px;
+
+.search
+    position: relative;
+    border-radius: $search-border-radius;
+    z-index: 1;
+
+    & > .button-group
+        display: flex;
+
+    .search-option-box
+        position: absolute;
+        right: 0;
+        left: 0;
+        padding-top: $search-border-radius;
+        margin-top: - $search-border-radius;
+        border: $search-border-width solid $search-border-color;
+        border-bottom-left-radius: $search-border-radius;
+        border-bottom-right-radius: $search-border-radius;
+        border-top-width: $search-divider-width - $input-border-width;
+        border-top-color: $search-border-color;
+        background-color: $input-default-background-color;
+        color: $input-default-color;
+        box-shadow: $input-box-shadow-height-0;
+        opacity: 0;
+        z-index: -1;
+        visibility: hidden;
+        transition: visibility 0s 0.3s, opacity 0.3s;
+
+        .search-option-list
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            .search-option
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+                padding: $search-spacing;
+                cursor: pointer;
+                outline: none;
+
+                &:hover,
+                &:active,
+                &:focus,
+                &.search-option-active
+                    background-color: $search-option-color;
+
+                &:last-child
+                    border-bottom-left-radius: $search-border-radius - $search-border-width;
+                    border-bottom-right-radius: $search-border-radius - $search-border-width;
+
+                .search-option-action
+                    flex-grow: 1;
+
+                    .search-option-action-text
+                        span
+                            b
+                                font-weight: bold;
+
+                .search-option-alt-action
+
+                    .search-option-alt-action-text
+                        font-weight: normal;
+
+    &[data-open="true"]
+
+        .search-option-box
+            opacity: 1;
+            visibility: visible;
+            transition: visibility 0.3s, opacity 0.3s;
+
+
+search-full($max-width = false) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $input-default-background-color;
+    border-radius: 0;
+    z-index: 20;
+
+    .search-button-group {
+        margin: $default-spacing;
+        border-bottom-left-radius: $search-border-radius;
+        border-bottom-right-radius: $search-border-radius;
+
+        .search-input {
+            border-bottom-left-radius: $search-border-radius;
+        }
+
+        .search-button {
+            border-bottom-right-radius: $search-border-radius;
+        }
+    }
+
+    .search-option-box {
+        .search-option-list {
+            .search-option:last-child {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    }
+}
+
+search-size(sizes...) {
+    for size in sizes {
+        @media only screen and (max-width: (size - 1)) {
+            search-full(size);
+        }
+    }
+}
+
+.search[data-open="true"]
+    &.search-full {
+        search-full();
+    }
+
+    &.search-xs {
+        search-size($size-xs);
+    }
+
+    &.search-sm {
+        search-size($size-sm);
+    }
+
+    &.search-md {
+        search-size($size-md);
+    }
+
+    &.search-lg {
+        search-size($size-lg);
+    }
+
+    &.search-xl {
+        search-size($size-xl);
+    }
+

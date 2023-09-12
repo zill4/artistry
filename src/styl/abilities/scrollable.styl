@@ -1,0 +1,77 @@
+.scrollable
+    -webkit-overflow-scrolling: touch;
+
+    &:not([data-scroll])
+    &[data-scroll="auto"]
+        overflow: auto
+
+    &[data-scroll="both"]
+        overflow: scroll
+
+    &[data-scroll="none"]
+        overflow: hidden
+
+    &[data-scroll="x"]
+        overflow-x: auto
+        overflow-y: hidden
+
+    &[data-scroll="y"]
+        overflow-x: hidden
+        overflow-y: auto
+
+    &[data-scroll="x-always"]
+        overflow-x: scroll
+        overflow-y: hidden
+
+    &[data-scroll="y-always"]
+        overflow-x: hidden
+        overflow-y: scroll
+
+    &[data-scroll="x-never"]
+        overflow-x: hidden
+
+    &[data-scroll="y-never"]
+        overflow-y: hidden
+
+.scrollable-y
+    overflow-y: auto
+
+.scrollable-x
+    overflow-x: auto
+
+:root {
+    --scrollable-bumper-size: $scrollable-bumper-size;
+}
+
+.scrollable
+    & > .scrollable-bumper
+        position: relative;
+
+        & > .scrollable-bumper-top
+            position: absolute;
+            height: var(--scrollable-bumper-size);
+            width: 100%;
+            z-index: -100;
+
+        & > .scrollable-bumper-bottom
+            position: absolute;
+            height: var(--scrollable-bumper-size);
+            width: 100%;
+            bottom: 0;
+            z-index: -100;
+
+        & > .scrollable-bumper-right
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: var(--scrollable-bumper-size);
+            z-index: -100;
+
+        & > .scrollable-bumper-left
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: var(--scrollable-bumper-size);
+            z-index: -100;

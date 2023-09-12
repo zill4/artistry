@@ -1,0 +1,75 @@
+@require "input-settings.styl";
+
+.input {
+    margin: $input-margin;
+    padding: var(--input-padding);
+    border-radius: $input-border-radius;
+    border: $input-border-width solid $input-default-border-color;
+    background-color: $input-default-background-color;
+    color: $input-default-color;
+    font-size: var(--input-font-size);
+    box-shadow: $input-box-shadow-height-0;
+    // Flexbox fix
+    min-width: 0;
+    &:focus {
+        outline: none;
+        border-color: $input-focus-border-color;
+        box-shadow: $box-shadow-height-1;
+    }
+    &:required {
+        //border-color: $input-required-border-color;
+    }
+    &:invalid {
+        //background-color: $input-danger-background-color;
+        //color: $input-danger-color;
+    }
+    &:readonly {
+        filter: var(--input-locked);
+        cursor: default;
+    }
+    &:disabled {
+        filter: var(--input-locked);
+        cursor: default;
+    }
+
+    &[data-size="small"] {
+        --input-padding: var(--input-padding-small);
+        --input-font-size: var(--input-font-size-small);
+    }
+
+    &[data-size="large"] {
+        --input-padding: var(--input-padding-large);
+        --input-font-size: var(--input-font-size-large);
+    }
+
+    &[data-theme="success"] {
+        background-color: $input-success-background-color;
+        color: $input-success-color;
+    }
+    &[data-theme="info"] {
+        background-color: $input-info-background-color;
+        color: $input-info-color;
+    }
+    &[data-theme="warning"] {
+        background-color: $input-warning-background-color;
+        color: $input-warning-color;
+    }
+    &[data-theme="danger"] {
+        background-color: $input-danger-background-color;
+        color: $input-danger-color;
+    }
+}
+
+input[type=""],
+input[type="text"],
+input[type="password"],
+textarea {
+    &.input {
+        // iOS specific fix
+        appearance: none;
+    }
+}
+
+.label {
+    font-weight: bold;
+}

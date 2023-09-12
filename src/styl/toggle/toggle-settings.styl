@@ -1,0 +1,46 @@
+@require "../settings.styl";
+
+// Define the color when the toggle is set to Off as the primary color desaturated
+$off-color ?= desaturate($primary-color, 50%);
+
+// Toggle default variables are being set here
+$toggle-border-width ?= $default-border-width;
+$toggle-border-color ?= $default-border-color;
+$toggle-box-height ?= 20px;
+$toggle-button-height ?= 30px;
+$toggle-min-width ?= 80px;
+$toggle-margin ?= 0; //$default-margin-layout;
+$toggle-button-offset ?= ($toggle-box-height - $toggle-button-height) / 2;
+$toggle-box-background-color ?= $gray-light;
+$toggle-box-box-shadow ?= $box-shadow-height-1;
+$toggle-button-box-shadow ?= $box-shadow-height-1;
+$toggle-button-hover-box-shadow ?= $box-shadow-height-1;
+
+// These define the color when the toggle is set to Off
+$toggle-button-background-color ?= $off-color;
+$toggle-button-border-color ?= $off-color;
+
+// These define the color when the toggle is set to Off and is focused(hovered by mouse or selected with)
+$toggle-button-hover-background-color ?= $primary-color;
+$toggle-button-hover-border-color ?= primary-color;
+
+// These define the color when the toggle is set to Off and is Active (depressed by mouseclick)
+$toggle-button-active-background-color ?= darken($off-color, $darker);
+$toggle-button-active-border-color ?= darken($off-color, $darker);
+
+// These define the color when the toggle is set to On
+$toggle-button-checked-background-color ?= $info-color;
+$toggle-button-checked-border-color ?= $info-color;
+
+// These define the color when the toggle is set to On and is focused
+$toggle-button-checked-hover-background-color ?= lighten($info-color, $lighter);
+$toggle-button-checked-hover-border-color ?= lighten($info-color, $lighter);
+
+// These define the color when the toggle is set to On and is Active
+$toggle-button-active-checked-background-color ?= darken($info-color, $darker);
+$toggle-button-active-checked-border-color ?= darken($info-color, $darker);
+
+
+// These define the color when the toggle is disabled
+$toggle-button-disabled-background-color ?= darken($gray, $darker);
+$toggle-button-disabled-border-color ?= darken($gray, $darker);
