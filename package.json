@@ -20,8 +20,8 @@
     "normalize.css": "8.0.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.5.18",
-    "autoprefixer": "^10.4.15",
+    "@types/jquery": "^3.5.19",
+    "autoprefixer": "^10.4.16",
     "clean-css-loader": "^4.2.1",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
